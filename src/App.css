@@ -1,38 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+	font-family: 'Poppins', sans-serif;
+	background: #262626;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+	display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.pad__container {
+	/* width: 360px; */
+	/* min-width: 160px; */
+	min-height: 200px;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(30px, 100px));
+	grid-gap: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.drum-pad {
+	width: 100px;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 25px;
+	background: #262626;
+	font-size: 20px;
+	color: #e05297;
+	cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.switch {
+	position: relative;
+	width: 40px;
+	height: 10px;
+	border-radius: 3px;
+	background: #e05297;
+	margin-left: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.switch div {
+	border-radius: 69px;
+	background: #262626;
+	border: 1px solid #e05297;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	position: absolute;
+	transform: translateY(-30%);
+	left: -10%;
+	transition: 0.5s ease-in-out;
+}
+
+.controllers {
+	padding: 20px;
+	margin-left: 30px;
+}
+
+.controllers > *:not(:last-child) {
+	margin-bottom: 30px;
+}
+
+.container input[type='range'] {
+	background: transparent;
+	-webkit-appearance: none;
+	position: relative;
+	outline: none;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+	background: transparent;
+	width: 100%;
+	height: 20px;
+	padding: 0 5px;
+	background: transparent;
+	border-radius: 2em;
+	box-shadow: inset 10px 10px 20px #1e1e1e, inset -10px -10px 20px #2e2e2e;
+}
+
+input[type='range']::-webkit-slider-thumb {
+	/* Removes the default styling */
+	-webkit-appearance: none;
+
+	width: 15px;
+	height: 15px;
+	margin-top: 2px;
+	background: #e05297;
+	border-radius: 100%;
+
+	box-shadow: 0px 0px 10px #be4680, 0px -0px 10px #ff5eae;
+
+	cursor: pointer;
+	z-index: 5;
+}
+
+input[type='range']::-moz-range-thumb {
+	width: 15px;
+	height: 15px;
+	margin-top: 2px;
+	background: #e05297;
+	border-radius: 100%;
+
+	box-shadow: 0px 0px 10px #be4680, 0px -0px 10px #ff5eae;
+
+	cursor: pointer;
+	z-index: 5;
+}
+
+input[type='range']::-moz-range-track {
+	background: transparent;
+	width: 100%;
+	height: 20px;
+	padding: 0 5px;
+	background: transparent;
+	border-radius: 2em;
+	box-shadow: inset 10px 10px 20px #1e1e1e, inset -10px -10px 20px #2e2e2e;
+}
+
+input[type='range']::before {
+	content: '0 1 2 3 4 5 6 7 8 9';
+	position: absolute;
+	text-align: center;
+	color: #c4c4c4;
+	/* font-size: 1em; */
+	/* letter-spacing: 0.65em; */
+	color: rgba(100, 100, 100, 0.37);
+	top: 3px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/* padding: 0 15px; */
+	/* z-index: -1; */
+}
+
+.controllers #display {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 130px;
+	height: 50px;
+	border-radius: 50px;
+	background: #262626;
+	box-shadow: 14px 14px 28px #202020, -14px -14px 28px #2c2c2c;
+	text-shadow: #fff 0px 0px 5px, #fff 0px 0px 10px, #fff 0px 0px 15px,
+		#ff2d95 0px 0px 20px, #ff2d95 0px 0px 30px, #ff2d95 0px 0px 40px,
+		#ff2d95 0px 0px 50px, #ff2d95 0px 0px 75px;
+	color: #ffffff;
+}
+
+@media (max-width: 500px) {
+	.container {
+		flex-direction: column;
+	}
+
+	.pad__container {
+		grid-gap: 15px;
+	}
+
+	.controllers {
+		margin: 10px 0 0 0;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+	.controllers > *:not(:last-child) {
+		margin-bottom: 0;
+	}
 }
